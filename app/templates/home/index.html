@@ -1,0 +1,58 @@
+<!-- START MAIN CONTENT -->
+<div class="col-xs-12 col-sm-8 col-md-8">
+
+  <div class="panel panel-default" ng-repeat="entry in viewModel.randomEntries">
+    <div class="panel-body">
+      <h1>{{entry.expression}}</h1>
+      <p>{{entry.meanings[0].description}}</p>
+      <!--blockquote>{{entry.meanings[0].example}}</blockquote-->
+    </div>
+    <div class="panel-footer">
+      <p>
+      <a href="" ng-class="{pink: entry.meanings[0].user.gender==='f'}">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        <b> {{entry.meanings[0].user.name}}</b>
+      </a>
+      {{entry.createdAt}}
+      </p>
+    </div>
+  </div>
+
+</div><!-- END MAIN CONTENT -->
+
+<!-- START SIDEBAR -->
+<div class="col-xs-12 col-sm-4 col-md-4">
+
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p>
+          Mit diesem Wörterbuch kann jeder seinen deutschen Wortschatz erweitern bzw. verbreiten.
+        </p>
+        <button class="btn btn-primary btn-sm">Registrieren und mitmischen</button>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3>Mundmische auf Facebook</h3></div>
+        <div class="fb-like" data-href="https://www.facebook.com/mundmische" data-width="290" data-show-faces="true" data-layout="standard" data-action="like" data-share="false">
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading"><h3>Neueste Einträge</h3></div>
+
+      <div class="list-group">
+        <a href="#" class="list-group-item" ng-repeat="entry in viewModel.recentEntries">
+          <span class="badge">
+            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+            {{entry.meanings[0].comments.length}}
+          </span>
+          <h4 class="list-group-item-heading">{{entry.expression}}</h4>
+          <p class="list-group-item-text">{{entry.meanings[0].description | limitTo:35}}...</p>
+        </a>
+      </div>
+    </div>
+
+</div><!-- END SIDEBAR -->
